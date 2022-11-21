@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
 
@@ -21,18 +21,20 @@ layout = """
 """
 
 def index(request):
-    return HttpResponse (layout+"""
-        <h1>Inicio</h1>
-     """)
+    return render(request,'index.html')
+    
 def hola_mundo(request):
-    return HttpResponse(layout+"""
-        <h1>Holis</h1>
-     """)
+    return render(request,'hola_mundo.html')
 
-def chau_mundo(request):
+def chau_mundo(request, redirigir=0):
+    if redirigir==1:
+        return redirect('/')
+    if redirigir==2:
+        return redirect('/contacto/Rocio')
+        
     return HttpResponse(layout+"""
         <h1>CHAUCHIS</h1>
      """)
 
-def contacto(request, nombre, apellido):
+def contacto(request, nombre="", apellido=""):
     return HttpResponse(layout+f"""<h1>Contacto {nombre} {apellido} </h1>""")

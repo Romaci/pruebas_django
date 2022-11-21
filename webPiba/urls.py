@@ -25,5 +25,8 @@ urlpatterns = [
     path('hola_mundo/', views.hola_mundo, name= "hola" ),
     path('', views.index, name= "index"),
     path('chau_mundo/', views.chau_mundo, name= "chau"),
+    path('chau_mundo/<int:redirigir>', views.chau_mundo, name= "chau"),
+    path('contacto/', views.contacto, name="contacto"),
+    path('contacto/<str:nombre>', views.contacto, name="contacto"),
     path('contacto/<str:nombre>/<str:apellido>', views.contacto, name="contacto")
 ]
